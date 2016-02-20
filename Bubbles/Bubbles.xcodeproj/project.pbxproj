@@ -17,6 +17,12 @@
 		A56F2B691C7820B7008B5F90 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A56F2B681C7820B7008B5F90 /* CloudKit.framework */; };
 		A56F2B6B1C78244B008B5F90 /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56F2B6A1C78244B008B5F90 /* Cloud.swift */; };
 		A56F2B6D1C782453008B5F90 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56F2B6C1C782453008B5F90 /* Bubble.swift */; };
+		A58A7E991C78C31E008ACC90 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58A7E981C78C31E008ACC90 /* Utilities.swift */; };
+		A58E3BCB1C78CB9B00768E4B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58E3BCA1C78CB9B00768E4B /* MapViewController.swift */; };
+		A58E3BCD1C78CBBA00768E4B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A58E3BCC1C78CBBA00768E4B /* MapKit.framework */; };
+		A58E3BD41C78D2FC00768E4B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A58E3BD31C78D2FC00768E4B /* Reachability.m */; };
+		A58E3BD61C78DA6100768E4B /* ZFRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58E3BD51C78DA6100768E4B /* ZFRippleButton.swift */; };
+		B643F3D9ECF24324E02D3947 /* Pods_Bubbles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A8E8582964855E859EE3C1F /* Pods_Bubbles.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15C380A032E4A8B6F7C1A680 /* Pods-Bubbles.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bubbles.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bubbles/Pods-Bubbles.debug.xcconfig"; sourceTree = "<group>"; };
+		7A8E8582964855E859EE3C1F /* Pods_Bubbles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bubbles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A56F2B361C78208C008B5F90 /* Bubbles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bubbles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A56F2B391C78208C008B5F90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A56F2B3B1C78208C008B5F90 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +62,14 @@
 		A56F2B681C7820B7008B5F90 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		A56F2B6A1C78244B008B5F90 /* Cloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
 		A56F2B6C1C782453008B5F90 /* Bubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
+		A58A7E981C78C31E008ACC90 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		A58E3BCA1C78CB9B00768E4B /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		A58E3BCC1C78CBBA00768E4B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A58E3BD11C78D2FC00768E4B /* Bubbles-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bubbles-Bridging-Header.h"; sourceTree = "<group>"; };
+		A58E3BD21C78D2FC00768E4B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		A58E3BD31C78D2FC00768E4B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		A58E3BD51C78DA6100768E4B /* ZFRippleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZFRippleButton.swift; sourceTree = "<group>"; };
+		A5CB3DBB81DC2A48F686336D /* Pods-Bubbles.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bubbles.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bubbles/Pods-Bubbles.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +77,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A58E3BCD1C78CBBA00768E4B /* MapKit.framework in Frameworks */,
 				A56F2B691C7820B7008B5F90 /* CloudKit.framework in Frameworks */,
+				B643F3D9ECF24324E02D3947 /* Pods_Bubbles.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +100,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4571EA8F0A910A0280F2188F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				15C380A032E4A8B6F7C1A680 /* Pods-Bubbles.debug.xcconfig */,
+				A5CB3DBB81DC2A48F686336D /* Pods-Bubbles.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		5901021FCFDEB261F538E17E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A8E8582964855E859EE3C1F /* Pods_Bubbles.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A56F2B2D1C78208C008B5F90 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +124,8 @@
 				A56F2B4D1C78208D008B5F90 /* BubblesTests */,
 				A56F2B581C78208D008B5F90 /* BubblesUITests */,
 				A56F2B371C78208C008B5F90 /* Products */,
+				4571EA8F0A910A0280F2188F /* Pods */,
+				5901021FCFDEB261F538E17E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,6 +144,7 @@
 			children = (
 				A56F2B6F1C78336F008B5F90 /* Model */,
 				A56F2B3D1C78208C008B5F90 /* Main.storyboard */,
+				A58E3BCA1C78CB9B00768E4B /* MapViewController.swift */,
 				A56F2B3B1C78208C008B5F90 /* ViewController.swift */,
 				A56F2B6E1C782467008B5F90 /* Supporting Files */,
 			);
@@ -135,11 +173,17 @@
 			isa = PBXGroup;
 			children = (
 				A56F2B391C78208C008B5F90 /* AppDelegate.swift */,
+				A58A7E981C78C31E008ACC90 /* Utilities.swift */,
+				A58E3BCC1C78CBBA00768E4B /* MapKit.framework */,
 				A56F2B681C7820B7008B5F90 /* CloudKit.framework */,
 				A56F2B671C7820B5008B5F90 /* Bubbles.entitlements */,
 				A56F2B401C78208C008B5F90 /* Assets.xcassets */,
 				A56F2B421C78208C008B5F90 /* LaunchScreen.storyboard */,
+				A58E3BD21C78D2FC00768E4B /* Reachability.h */,
+				A58E3BD31C78D2FC00768E4B /* Reachability.m */,
 				A56F2B451C78208C008B5F90 /* Info.plist */,
+				A58E3BD51C78DA6100768E4B /* ZFRippleButton.swift */,
+				A58E3BD11C78D2FC00768E4B /* Bubbles-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -160,9 +204,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A56F2B5E1C78208D008B5F90 /* Build configuration list for PBXNativeTarget "Bubbles" */;
 			buildPhases = (
+				0E56E0EEB3563C79B2870C8D /* Check Pods Manifest.lock */,
 				A56F2B321C78208C008B5F90 /* Sources */,
 				A56F2B331C78208C008B5F90 /* Frameworks */,
 				A56F2B341C78208C008B5F90 /* Resources */,
+				DC8284B500A97C1E85DF0373 /* Embed Pods Frameworks */,
+				4CC54F14F14E4AFABA758C1B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -223,6 +270,9 @@
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = V3N72D7MS5;
 						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};
@@ -285,15 +335,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0E56E0EEB3563C79B2870C8D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4CC54F14F14E4AFABA758C1B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bubbles/Pods-Bubbles-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DC8284B500A97C1E85DF0373 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bubbles/Pods-Bubbles-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A56F2B321C78208C008B5F90 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				A56F2B3C1C78208C008B5F90 /* ViewController.swift in Sources */,
+				A58E3BCB1C78CB9B00768E4B /* MapViewController.swift in Sources */,
 				A56F2B6B1C78244B008B5F90 /* Cloud.swift in Sources */,
+				A58E3BD41C78D2FC00768E4B /* Reachability.m in Sources */,
 				A56F2B3A1C78208C008B5F90 /* AppDelegate.swift in Sources */,
+				A58A7E991C78C31E008ACC90 /* Utilities.swift in Sources */,
 				A56F2B6D1C782453008B5F90 /* Bubble.swift in Sources */,
+				A58E3BD61C78DA6100768E4B /* ZFRippleButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,8 +535,10 @@
 		};
 		A56F2B5F1C78208D008B5F90 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15C380A032E4A8B6F7C1A680 /* Pods-Bubbles.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Bubbles/Bubbles.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -443,13 +547,17 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.blissChapman.Bubbles;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bubbles/Bubbles-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		A56F2B601C78208D008B5F90 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5CB3DBB81DC2A48F686336D /* Pods-Bubbles.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Bubbles/Bubbles.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -458,6 +566,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.blissChapman.Bubbles;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bubbles/Bubbles-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -528,6 +637,7 @@
 				A56F2B601C78208D008B5F90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A56F2B611C78208D008B5F90 /* Build configuration list for PBXNativeTarget "BubblesTests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +646,7 @@
 				A56F2B631C78208D008B5F90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A56F2B641C78208D008B5F90 /* Build configuration list for PBXNativeTarget "BubblesUITests" */ = {
 			isa = XCConfigurationList;
@@ -544,6 +655,7 @@
 				A56F2B661C78208D008B5F90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,13 +1,71 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kRf-NQ-m3J">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
+        <!--Map View Controller-->
+        <scene sceneID="nxb-ZE-6Hm">
+            <objects>
+                <viewController id="kRf-NQ-m3J" customClass="MapViewController" customModule="Bubbles" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yiz-gT-HOi"/>
+                        <viewControllerLayoutGuide type="bottom" id="4ok-RY-4Vq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DGW-GL-mr8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7QO-sp-beN">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3s-6x-gWN" customClass="ZFRippleButton" customModule="Bubbles" customModuleProvider="target">
+                                <rect key="frame" x="240" y="472" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="N3s-6x-gWN" secondAttribute="height" multiplier="1:1" id="WuD-Ad-Z7T"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="addBubbleTapped:" destination="kRf-NQ-m3J" eventType="touchUpInside" id="wms-CD-7Pr"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXC-7F-oZ9">
+                                <rect key="frame" x="294.5" y="522" width="11" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KXC-7F-oZ9" firstAttribute="centerX" secondItem="N3s-6x-gWN" secondAttribute="centerX" id="11r-NG-Io7"/>
+                            <constraint firstItem="4ok-RY-4Vq" firstAttribute="top" secondItem="N3s-6x-gWN" secondAttribute="bottom" constant="8" symbolic="YES" id="9X4-q4-dgw"/>
+                            <constraint firstItem="KXC-7F-oZ9" firstAttribute="centerY" secondItem="N3s-6x-gWN" secondAttribute="centerY" id="AYM-ir-6rW"/>
+                            <constraint firstItem="N3s-6x-gWN" firstAttribute="width" secondItem="DGW-GL-mr8" secondAttribute="width" multiplier="1:5" id="Inc-Px-kq6"/>
+                            <constraint firstItem="7QO-sp-beN" firstAttribute="width" secondItem="DGW-GL-mr8" secondAttribute="width" id="KaE-tj-QVw"/>
+                            <constraint firstItem="7QO-sp-beN" firstAttribute="centerY" secondItem="DGW-GL-mr8" secondAttribute="centerY" id="T8o-kf-j1w"/>
+                            <constraint firstItem="7QO-sp-beN" firstAttribute="centerX" secondItem="DGW-GL-mr8" secondAttribute="centerX" id="isC-xs-Wz6"/>
+                            <constraint firstItem="N3s-6x-gWN" firstAttribute="centerX" secondItem="DGW-GL-mr8" secondAttribute="centerX" id="jok-yh-6uv"/>
+                            <constraint firstItem="7QO-sp-beN" firstAttribute="height" secondItem="DGW-GL-mr8" secondAttribute="height" id="y8u-9F-11q"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="blowBubbleButton" destination="N3s-6x-gWN" id="lnG-yD-Piu"/>
+                        <outlet property="blowBubbleButtonLabel" destination="KXC-7F-oZ9" id="q1m-So-wtf"/>
+                        <outlet property="mapBackground" destination="7QO-sp-beN" id="cie-gC-Fiz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2bt-kz-Xva" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="997" y="393"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Bubbles" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +73,80 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uvg-T8-HJw">
+                                <rect key="frame" x="273" y="284.5" width="54" height="30"/>
+                                <state key="normal" title=" Blow it!"/>
+                                <connections>
+                                    <action selector="blowTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dLD-gm-ekX"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="o05-q1-ofk">
+                                <rect key="frame" x="281.5" y="281" width="37" height="37"/>
+                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQv-kt-NvN">
+                                <rect key="frame" x="20" y="323" width="560" height="277"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="mwS-ZA-XbX">
+                                <rect key="frame" x="282" y="24" width="37" height="37"/>
+                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mk-fF-qCO">
+                                <rect key="frame" x="20" y="58" width="560" height="226.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9I-ED-7k3">
+                                <rect key="frame" x="238" y="28" width="124" height="30"/>
+                                <state key="normal" title="Fetch All Bubbles!"/>
+                                <connections>
+                                    <action selector="fetchTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xuD-Ky-bVa"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="3mk-fF-qCO" secondAttribute="trailing" id="51j-Zy-bkX"/>
+                            <constraint firstItem="uvg-T8-HJw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="5ET-UH-m4e"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gQv-kt-NvN" secondAttribute="bottom" id="Dv9-W2-D4B"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gQv-kt-NvN" secondAttribute="trailing" id="Gb3-yK-Z48"/>
+                            <constraint firstItem="g9I-ED-7k3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="Gub-yf-hN4"/>
+                            <constraint firstItem="3mk-fF-qCO" firstAttribute="top" secondItem="g9I-ED-7k3" secondAttribute="bottom" id="LT4-LM-blI"/>
+                            <constraint firstItem="o05-q1-ofk" firstAttribute="centerX" secondItem="uvg-T8-HJw" secondAttribute="centerX" id="RxS-bA-Ewd"/>
+                            <constraint firstItem="3mk-fF-qCO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="TC6-Nc-IOO"/>
+                            <constraint firstItem="mwS-ZA-XbX" firstAttribute="centerX" secondItem="g9I-ED-7k3" secondAttribute="centerX" id="VQL-xD-hQH"/>
+                            <constraint firstItem="g9I-ED-7k3" firstAttribute="leading" secondItem="3mk-fF-qCO" secondAttribute="trailing" constant="-337" id="Wu1-ga-AZT"/>
+                            <constraint firstItem="uvg-T8-HJw" firstAttribute="top" secondItem="3mk-fF-qCO" secondAttribute="bottom" id="b5f-xn-d2b"/>
+                            <constraint firstItem="g9I-ED-7k3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dOY-bM-p3K"/>
+                            <constraint firstItem="o05-q1-ofk" firstAttribute="centerY" secondItem="uvg-T8-HJw" secondAttribute="centerY" id="dXe-uU-v9d"/>
+                            <constraint firstItem="mwS-ZA-XbX" firstAttribute="centerY" secondItem="g9I-ED-7k3" secondAttribute="centerY" id="dZe-Je-keM"/>
+                            <constraint firstItem="uvg-T8-HJw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hIV-B4-JIv"/>
+                            <constraint firstItem="gQv-kt-NvN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="jox-Js-it2"/>
+                            <constraint firstItem="gQv-kt-NvN" firstAttribute="top" secondItem="uvg-T8-HJw" secondAttribute="bottom" constant="8" symbolic="YES" id="kTR-Ux-tBH"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Wu1-ga-AZT"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="blowButton" destination="uvg-T8-HJw" id="uBI-qw-r05"/>
+                        <outlet property="bubbleBlowing" destination="o05-q1-ofk" id="ctf-BB-P0J"/>
+                        <outlet property="fetchButton" destination="g9I-ED-7k3" id="RLL-pe-Efg"/>
+                        <outlet property="fetchButtonLoadingSymbol" destination="mwS-ZA-XbX" id="eYC-hB-oez"/>
+                        <outlet property="fetchButtonResultLabel" destination="3mk-fF-qCO" id="k3S-he-XIa"/>
+                        <outlet property="messageLabel" destination="gQv-kt-NvN" id="ilu-fl-9kw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="151" y="393"/>
         </scene>
     </scenes>
 </document>
