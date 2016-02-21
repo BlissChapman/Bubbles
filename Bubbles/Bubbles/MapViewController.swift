@@ -14,7 +14,6 @@ import CloudKit
 
 class MapViewController: UIViewController {
 
-
     @IBOutlet weak var conflictButton: UIButton!
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var blowingLoadingSymbol: UIActivityIndicatorView!
@@ -189,7 +188,7 @@ class MapViewController: UIViewController {
 
             print("NEW WAY")
 
-            delay(2.0, AndExecuteClosure: { () -> Void in
+            //delay(2.0, AndExecuteClosure: { () -> Void in
                 self.reloadMapPins(withCompletion: { () -> () in
                     =>~{
                         self.conflictButton.enabled = true
@@ -217,7 +216,7 @@ class MapViewController: UIViewController {
                         })
                     }
                 })
-            })
+            //})
         })
     }
 

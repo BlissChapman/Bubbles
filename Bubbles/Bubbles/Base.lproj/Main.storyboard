@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kRf-NQ-m3J">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CUC-uF-5tt">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -128,6 +128,135 @@
                 </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="997" y="393"/>
+        </scene>
+        <!--Squid View Controller-->
+        <scene sceneID="q40-Zv-ImE">
+            <objects>
+                <viewController id="CUC-uF-5tt" customClass="SquidViewController" customModule="Bubbles" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vWd-tT-sGx"/>
+                        <viewControllerLayoutGuide type="bottom" id="7Rh-w2-icg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="abh-BL-33B">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DUS-eb-dtb">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TXh-lr-0Ky" customClass="ZFRippleButton" customModule="Bubbles" customModuleProvider="target">
+                                <rect key="frame" x="240" y="472" width="120" height="120"/>
+                                <color key="backgroundColor" red="0.97647058819999999" green="0.3294117647" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="TXh-lr-0Ky" secondAttribute="height" multiplier="1:1" id="BG2-ib-MbX"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="BG2-ib-MbX"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="u5p-wh-ceH" appends="YES" id="cWt-R2-b9W"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SquidButtonIcon" translatesAutoresizingMaskIntoConstraints="NO" id="9On-Os-1mG">
+                                <rect key="frame" x="252" y="484" width="96" height="96"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="9On-Os-1mG" secondAttribute="height" multiplier="1:1" id="L4b-Uq-Fbv"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="suS-RY-97L">
+                                <rect key="frame" x="70" y="28" width="460" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="VcK-Pj-m1G"/>
+                                    <constraint firstAttribute="width" constant="1" id="jLR-1a-1Fb"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="VcK-Pj-m1G"/>
+                                        <exclude reference="jLR-1a-1Fb"/>
+                                    </mask>
+                                </variation>
+                            </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g7X-7h-tMI">
+                                <rect key="frame" x="530" y="28" width="50" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jkS-rD-LSX">
+                                <rect key="frame" x="20" y="28" width="50" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="g7X-7h-tMI" secondAttribute="trailing" id="091-Cp-nuP"/>
+                            <constraint firstItem="9On-Os-1mG" firstAttribute="centerY" secondItem="TXh-lr-0Ky" secondAttribute="centerY" id="0Fe-YS-1ka"/>
+                            <constraint firstItem="g7X-7h-tMI" firstAttribute="leading" secondItem="suS-RY-97L" secondAttribute="trailing" id="5Cl-kY-Ace"/>
+                            <constraint firstItem="7Rh-w2-icg" firstAttribute="top" secondItem="DUS-eb-dtb" secondAttribute="bottom" id="6aT-CH-3cJ"/>
+                            <constraint firstItem="jkS-rD-LSX" firstAttribute="height" secondItem="abh-BL-33B" secondAttribute="height" id="7Vb-r8-hdb"/>
+                            <constraint firstAttribute="trailing" secondItem="DUS-eb-dtb" secondAttribute="trailing" id="Af9-be-9ts"/>
+                            <constraint firstItem="jkS-rD-LSX" firstAttribute="width" secondItem="abh-BL-33B" secondAttribute="width" multiplier="1:12" id="G0a-Mq-zCE"/>
+                            <constraint firstItem="g7X-7h-tMI" firstAttribute="centerY" secondItem="suS-RY-97L" secondAttribute="centerY" id="H7X-dj-jsg"/>
+                            <constraint firstItem="suS-RY-97L" firstAttribute="centerY" secondItem="TXh-lr-0Ky" secondAttribute="centerY" id="HQk-iE-a8l"/>
+                            <constraint firstItem="DUS-eb-dtb" firstAttribute="centerY" secondItem="abh-BL-33B" secondAttribute="centerY" id="KI9-tT-eSh"/>
+                            <constraint firstItem="jkS-rD-LSX" firstAttribute="leading" secondItem="abh-BL-33B" secondAttribute="leadingMargin" id="O7e-ic-vll"/>
+                            <constraint firstItem="9On-Os-1mG" firstAttribute="top" secondItem="DUS-eb-dtb" secondAttribute="bottom" constant="-600" id="OUI-Gi-YYA"/>
+                            <constraint firstItem="g7X-7h-tMI" firstAttribute="height" secondItem="suS-RY-97L" secondAttribute="height" id="Oic-RM-9gC"/>
+                            <constraint firstItem="7Rh-w2-icg" firstAttribute="top" secondItem="TXh-lr-0Ky" secondAttribute="bottom" constant="8" symbolic="YES" id="SxE-1y-EEK"/>
+                            <constraint firstItem="suS-RY-97L" firstAttribute="top" secondItem="vWd-tT-sGx" secondAttribute="bottom" constant="8" symbolic="YES" id="U6p-68-zrs"/>
+                            <constraint firstItem="jkS-rD-LSX" firstAttribute="width" secondItem="g7X-7h-tMI" secondAttribute="width" id="XG3-8u-EC5"/>
+                            <constraint firstItem="suS-RY-97L" firstAttribute="height" secondItem="abh-BL-33B" secondAttribute="height" multiplier="1:3" id="Y9k-Df-5TR"/>
+                            <constraint firstItem="TXh-lr-0Ky" firstAttribute="width" secondItem="TXh-lr-0Ky" secondAttribute="height" multiplier="1:1" id="Z49-Pu-LBn"/>
+                            <constraint firstItem="TXh-lr-0Ky" firstAttribute="centerX" secondItem="abh-BL-33B" secondAttribute="centerX" id="bXT-9p-tgI"/>
+                            <constraint firstItem="suS-RY-97L" firstAttribute="height" secondItem="abh-BL-33B" secondAttribute="height" id="cH0-Sp-Gjx"/>
+                            <constraint firstItem="jkS-rD-LSX" firstAttribute="centerY" secondItem="g7X-7h-tMI" secondAttribute="centerY" id="dFl-3M-qZ6"/>
+                            <constraint firstItem="9On-Os-1mG" firstAttribute="centerX" secondItem="TXh-lr-0Ky" secondAttribute="centerX" id="efA-ks-VXb"/>
+                            <constraint firstItem="DUS-eb-dtb" firstAttribute="height" secondItem="abh-BL-33B" secondAttribute="height" id="egN-WG-TSx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="suS-RY-97L" secondAttribute="trailing" id="fGF-10-dA0"/>
+                            <constraint firstItem="suS-RY-97L" firstAttribute="leading" secondItem="jkS-rD-LSX" secondAttribute="trailing" id="fXg-KR-me5"/>
+                            <constraint firstItem="suS-RY-97L" firstAttribute="leading" secondItem="abh-BL-33B" secondAttribute="leadingMargin" id="hYd-yW-Eys"/>
+                            <constraint firstItem="TXh-lr-0Ky" firstAttribute="width" secondItem="abh-BL-33B" secondAttribute="width" multiplier="1:5" id="i5Z-af-fH7"/>
+                            <constraint firstItem="DUS-eb-dtb" firstAttribute="leading" secondItem="abh-BL-33B" secondAttribute="leading" id="iRy-Zd-h7W"/>
+                            <constraint firstItem="DUS-eb-dtb" firstAttribute="top" secondItem="vWd-tT-sGx" secondAttribute="bottom" id="r3f-ad-cYy"/>
+                            <constraint firstItem="jkS-rD-LSX" firstAttribute="height" secondItem="g7X-7h-tMI" secondAttribute="height" id="yQr-wy-KW6"/>
+                            <constraint firstItem="suS-RY-97L" firstAttribute="centerX" secondItem="TXh-lr-0Ky" secondAttribute="centerX" id="yUg-j4-KaA"/>
+                            <constraint firstItem="g7X-7h-tMI" firstAttribute="top" secondItem="vWd-tT-sGx" secondAttribute="bottom" constant="206" id="zX9-JK-UiZ"/>
+                            <constraint firstItem="9On-Os-1mG" firstAttribute="width" secondItem="TXh-lr-0Ky" secondAttribute="width" multiplier="0.8" id="zgd-MH-A5S"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="r3f-ad-cYy"/>
+                                <exclude reference="7Vb-r8-hdb"/>
+                                <exclude reference="HQk-iE-a8l"/>
+                                <exclude reference="cH0-Sp-Gjx"/>
+                                <exclude reference="fGF-10-dA0"/>
+                                <exclude reference="hYd-yW-Eys"/>
+                                <exclude reference="yUg-j4-KaA"/>
+                                <exclude reference="OUI-Gi-YYA"/>
+                                <exclude reference="zX9-JK-UiZ"/>
+                                <exclude reference="6aT-CH-3cJ"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="map" destination="DUS-eb-dtb" id="0aH-Gd-if0"/>
+                        <outlet property="squidButton" destination="TXh-lr-0Ky" id="fcD-6z-rOM"/>
+                        <outlet property="textViewBubble" destination="suS-RY-97L" id="4eB-fm-Kp4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DAE-Yb-i5A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="u5p-wh-ceH">
+                    <connections>
+                        <action selector="squidButtonLongPressed:" destination="CUC-uF-5tt" id="1XJ-Cn-p6v"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1674" y="393"/>
         </scene>
     </scenes>
     <resources>

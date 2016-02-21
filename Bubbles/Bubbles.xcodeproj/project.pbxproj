@@ -21,6 +21,7 @@
 		A58E3BCD1C78CBBA00768E4B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A58E3BCC1C78CBBA00768E4B /* MapKit.framework */; };
 		A58E3BD41C78D2FC00768E4B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A58E3BD31C78D2FC00768E4B /* Reachability.m */; };
 		A58E3BD61C78DA6100768E4B /* ZFRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58E3BD51C78DA6100768E4B /* ZFRippleButton.swift */; };
+		A58E3BDA1C79AF2900768E4B /* SquidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58E3BD91C79AF2900768E4B /* SquidViewController.swift */; };
 		B643F3D9ECF24324E02D3947 /* Pods_Bubbles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A8E8582964855E859EE3C1F /* Pods_Bubbles.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		A58E3BD21C78D2FC00768E4B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		A58E3BD31C78D2FC00768E4B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		A58E3BD51C78DA6100768E4B /* ZFRippleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZFRippleButton.swift; sourceTree = "<group>"; };
+		A58E3BD91C79AF2900768E4B /* SquidViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquidViewController.swift; sourceTree = "<group>"; };
 		A5CB3DBB81DC2A48F686336D /* Pods-Bubbles.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bubbles.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bubbles/Pods-Bubbles.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,6 +144,7 @@
 			children = (
 				A56F2B6F1C78336F008B5F90 /* Model */,
 				A56F2B3D1C78208C008B5F90 /* Main.storyboard */,
+				A58E3BD91C79AF2900768E4B /* SquidViewController.swift */,
 				A58E3BCA1C78CB9B00768E4B /* MapViewController.swift */,
 				A56F2B6E1C782467008B5F90 /* Supporting Files */,
 			);
@@ -171,9 +174,9 @@
 			children = (
 				A56F2B391C78208C008B5F90 /* AppDelegate.swift */,
 				A58A7E981C78C31E008ACC90 /* Utilities.swift */,
+				A56F2B671C7820B5008B5F90 /* Bubbles.entitlements */,
 				A58E3BCC1C78CBBA00768E4B /* MapKit.framework */,
 				A56F2B681C7820B7008B5F90 /* CloudKit.framework */,
-				A56F2B671C7820B5008B5F90 /* Bubbles.entitlements */,
 				A56F2B401C78208C008B5F90 /* Assets.xcassets */,
 				A56F2B421C78208C008B5F90 /* LaunchScreen.storyboard */,
 				A58E3BD21C78D2FC00768E4B /* Reachability.h */,
@@ -386,6 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A58E3BCB1C78CB9B00768E4B /* MapViewController.swift in Sources */,
+				A58E3BDA1C79AF2900768E4B /* SquidViewController.swift in Sources */,
 				A56F2B6B1C78244B008B5F90 /* Cloud.swift in Sources */,
 				A58E3BD41C78D2FC00768E4B /* Reachability.m in Sources */,
 				A56F2B3A1C78208C008B5F90 /* AppDelegate.swift in Sources */,

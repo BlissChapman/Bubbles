@@ -29,6 +29,7 @@ final class Bubble {
 
         let operation = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
         operation.perRecordCompletionBlock = completionHandler
+        operation.queuePriority = .VeryHigh
         operation.savePolicy = .AllKeys
 
         Cloud.database.addOperation(operation)

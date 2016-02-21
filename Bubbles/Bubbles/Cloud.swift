@@ -37,20 +37,6 @@ final class Cloud {
         }
     }
 
-    static func popClosestBubbleInRadius(atLocation location: CLLocation, completionHandler: (CKRecord?, NSError?)->()) {
-
-        fetchAllPoppableBubbles(withLocation: location, andKilometerRadius: 2) { (records, error) -> () in
-            guard error == nil else {
-                debugPrint(error)
-                return
-            }
-
-            if let records = records where records.count > 0 {
-                popBubble(records.first!, completionHandler: completionHandler)
-            }
-        }
-    }
-
     static func popBubble(record: CKRecord, completionHandler: (CKRecord?, NSError?)->()) {
         record["isPopped"] = 1
         database.saveRecord(record, completionHandler: completionHandler)
