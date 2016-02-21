@@ -12,16 +12,9 @@ import CloudKit
 final class Cloud {
     static let database = CKContainer.defaultContainer().publicCloudDatabase
 
-    static func fetchAllBubbles(completion: ([CKRecord]?, NSError?)->()) {
-        let predicate = NSPredicate(value: true)
-        let query = CKQuery(recordType: "BubbleRecord", predicate: predicate)
+    static func fetchAllPoppableBubbles(withLocation location: CLLocation, andKilometerRadius km: Int, completion: ([CKRecord]?, NSError?)->()) {
 
-        database.performQuery(query, inZoneWithID: nil, completionHandler: completion)
-    }
-
-    static func fetchAllPoppableBubbles(withLocation location: CLLocation, completion: ([CKRecord]?, NSError?)->()) {
-        //3 is kilometer range
-        let predicate = NSPredicate(format: "distanceToLocation:fromLocation:(location, %@) < 3", location)
+        let predicate = NSPredicate(format: "distanceToLocation:fromLocation:(location, %@) < \(km)", location)
         let query = CKQuery(recordType: "BubbleRecord", predicate: predicate)
         query.sortDescriptors = [CKLocationSortDescriptor(key: "location", relativeLocation: location)]
         database.performQuery(query, inZoneWithID: nil) { (records, error) -> Void in
@@ -32,23 +25,21 @@ final class Cloud {
             }
 
             var notPoppedBubbles = [CKRecord]()
-            var poppedBubbles = [CKRecord]()
             if let records = records {
                 for record in records {
                     if record["isPopped"] as? Int == 0 {
                         notPoppedBubbles.append(record)
-                    } else {
-                        poppedBubbles.append(record)
                     }
                 }
             }
 
-            completion(notPoppedBubbles, nil)
+            =>~{ completion(notPoppedBubbles, nil) }
         }
     }
 
     static func popClosestBubbleInRadius(atLocation location: CLLocation, completionHandler: (CKRecord?, NSError?)->()) {
-        fetchAllPoppableBubbles(withLocation: location) { (records, error) -> () in
+
+        fetchAllPoppableBubbles(withLocation: location, andKilometerRadius: 2) { (records, error) -> () in
             guard error == nil else {
                 debugPrint(error)
                 return

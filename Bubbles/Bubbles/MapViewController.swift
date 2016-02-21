@@ -246,7 +246,9 @@ class MapViewController: UIViewController {
         print("RELOADNG MAP PINS")
         let annotationsToRemove = mapBackground.annotations.filter { $0 !== mapBackground.userLocation }
         mapBackground.removeAnnotations( annotationsToRemove )
-        Cloud.fetchAllPoppableBubbles(withLocation: usersLocation!) { (records, error) -> () in
+
+        Cloud.fetchAllPoppableBubbles(withLocation: usersLocation!, andKilometerRadius: 2) { (records, error) -> () in
+
             dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0), { () -> Void in
                 self.nearbyBubbles = records
 
