@@ -155,8 +155,9 @@ class MapViewController: UIViewController {
                     self.confirmButton.alpha = 0
 
                     }, completion: { (completed) -> Void in
-                        //self.bubbleContainer.frame = bubbleContainerFrame
-                        self.bubbleContainer.transform = translatedAndScaledTransformUsingViewRect(bubbleContainerFrame, fromRect: self.blowBubbleButton.frame)
+                        //put frame back to where it was before animation
+                        self.bubbleContainer.frame = bubbleContainerFrame
+                        //self.bubbleContainer.transform = translatedAndScaledTransformUsingViewRect(bubbleContainerFrame, fromRect: self.blowBubbleButton.frame)
                         self.resetBubbleContainer()
 
                         //                        self.bubbleContainer.frame = CGRect(x: self.blowBubbleButton.frame.minX + self.blowBubbleButton.frame.width * 1/5, y: self.blowBubbleButton.frame.minY + self.blowBubbleButton.frame.height * 1/5, width: self.blowBubbleButton.frame.width * 3/5, height: self.blowBubbleButton.frame.height * 3/5)
@@ -170,9 +171,10 @@ class MapViewController: UIViewController {
         bubbleTextField.text = ""
         bubbleTextField.editable = false
         bubbleTextField.resignFirstResponder()
-        bubbleContainer.frame = self.blowBubbleButton.frame
+        //bubbleContainer.frame = self.blowBubbleButton.frame
 
-        bubbleTextField.transform = CGAffineTransformIdentity
+        self.bubbleContainer.transform = translatedAndScaledTransformUsingViewRect(self.originalBubbleFrame, fromRect: self.newBubbleFrame)
+        //bubbleTextField.transform = CGAffineTransformIdentity
 
         conflictButton.enabled = true
         confirmButton.enabled = true
