@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SquidButtonIconLarge" translatesAutoresizingMaskIntoConstraints="NO" id="cwM-Fc-p5W">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SquidButtonIconV2" translatesAutoresizingMaskIntoConstraints="NO" id="cwM-Fc-p5W">
                                 <rect key="frame" x="150" y="150" width="300" height="300"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
@@ -38,6 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="SquidButtonIconLarge" width="1200" height="1200"/>
+        <image name="SquidButtonIconV2" width="1200" height="1200"/>
     </resources>
 </document>

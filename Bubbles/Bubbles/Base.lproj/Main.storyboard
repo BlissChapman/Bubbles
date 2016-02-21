@@ -127,7 +127,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="997" y="393"/>
+            <point key="canvasLocation" x="908" y="452"/>
         </scene>
         <!--Squid View Controller-->
         <scene sceneID="q40-Zv-ImE">
@@ -171,6 +171,33 @@
                                     <action selector="confirmButtonTapped:" destination="CUC-uF-5tt" eventType="touchUpInside" id="jl8-Tr-N55"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TXh-lr-0Ky" customClass="ZFRippleButton" customModule="Bubbles" customModuleProvider="target">
+                                <rect key="frame" x="240" y="472" width="120" height="120"/>
+                                <color key="backgroundColor" red="0.97647058819999999" green="0.3294117647" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="TXh-lr-0Ky" secondAttribute="height" multiplier="1:1" id="BG2-ib-MbX"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="BG2-ib-MbX"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="u5p-wh-ceH" appends="YES" id="cWt-R2-b9W"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SquidButtonIconV2" translatesAutoresizingMaskIntoConstraints="NO" id="9On-Os-1mG">
+                                <rect key="frame" x="252" y="484" width="96" height="96"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="9On-Os-1mG" secondAttribute="height" multiplier="1:1" id="L4b-Uq-Fbv"/>
+                                </constraints>
+                            </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="x1U-YI-uKa">
+                                <rect key="frame" x="281" y="110" width="37" height="37"/>
+                                <color key="color" red="0.039215686270000001" green="0.078431372550000003" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="suS-RY-97L">
                                 <rect key="frame" x="70" y="28" width="460" height="200"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -188,32 +215,6 @@
                                     </mask>
                                 </variation>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TXh-lr-0Ky" customClass="ZFRippleButton" customModule="Bubbles" customModuleProvider="target">
-                                <rect key="frame" x="240" y="472" width="120" height="120"/>
-                                <color key="backgroundColor" red="0.97647058819999999" green="0.3294117647" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="TXh-lr-0Ky" secondAttribute="height" multiplier="1:1" id="BG2-ib-MbX"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="BG2-ib-MbX"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="u5p-wh-ceH" appends="YES" id="cWt-R2-b9W"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SquidButtonIcon" translatesAutoresizingMaskIntoConstraints="NO" id="9On-Os-1mG">
-                                <rect key="frame" x="252" y="484" width="96" height="96"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="9On-Os-1mG" secondAttribute="height" multiplier="1:1" id="L4b-Uq-Fbv"/>
-                                </constraints>
-                            </imageView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="x1U-YI-uKa">
-                                <rect key="frame" x="10" y="10" width="37" height="37"/>
-                                <color key="color" red="0.039215686270000001" green="0.078431372550000003" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -303,5 +304,6 @@
         <image name="Checkmark" width="100" height="100"/>
         <image name="Conflict" width="100" height="100"/>
         <image name="SquidButtonIcon" width="1200" height="1200"/>
+        <image name="SquidButtonIconV2" width="1200" height="1200"/>
     </resources>
 </document>
