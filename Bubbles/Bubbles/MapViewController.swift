@@ -91,29 +91,27 @@ class MapViewController: UIViewController {
 
 
         if sender.state == .Began {
+            //held it long enough
             blowBubbleButton.enabled = false
             blowBubbleButton.backgroundColor = .grayColor()
 
-            let newBubbleFrame = CGRectMake(self.view.frame.width * 1/16, self.view.frame.width * 2/16, self.view.frame.width * 7/8, self.view.frame.height * 1/3)
             UIView.animateWithDuration(3, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 1.5, options: [.CurveEaseOut, .AllowUserInteraction], animations: { () -> Void in
 
-                self.bubbleContainer.transform = translatedAndScaledTransformUsingViewRect(newBubbleFrame, fromRect: self.originalBubbleFrame)
+                self.bubbleContainer.transform = translatedAndScaledTransformUsingViewRect(self.newBubbleFrame, fromRect: self.originalBubbleFrame)
 
                 UIView.animateWithDuration(1.0, delay: 1.5, options: .CurveEaseOut, animations: { () -> Void in
                     self.confirmButton.alpha = 1.0
                     self.conflictButton.alpha = 1.0
+                    self.confirmButton.enabled = true
+                    self.conflictButton.enabled = true
 
                     }, completion: nil)
 
                 }, completion: { (completed) -> Void in
 
-
-
                     self.bubbleTextField.alpha = 1.0
                     self.bubbleTextField.editable = true
                     self.bubbleTextField.becomeFirstResponder()
-                    //self.bubbleTextField.sizeToFit()
-
             })
 
         } else if sender.state == .Failed {
@@ -122,13 +120,23 @@ class MapViewController: UIViewController {
         }
     }
 
+    @IBAction func blowCanceledTapped(sender: UIButton) {
+        resetBubbleContainer()
+    }
+
     @IBAction func blowButtonTapped(sender: UIButton) {
 
         let newBubble = Bubble(withMessage: bubbleTextField.text, andLocation: usersLocation!)
         blowingLoadingSymbol.startAnimating()
+        bubbleTextField.editable = false
+        conflictButton.enabled = false
+        confirmButton.enabled = false
         newBubble.blow({ (record, error) -> Void in
 
             =>~{
+                self.conflictButton.enabled = true
+
+                self.bubbleTextField.editable = true
                 self.bubbleTextField.resignFirstResponder()
                 self.blowingLoadingSymbol.stopAnimating()
 
@@ -137,41 +145,44 @@ class MapViewController: UIViewController {
                     return
                 }
 
-                self.bubbleTextField.text = ""
+                //successful blow
+                let bubbleContainerFrame = self.bubbleContainer.frame
                 UIView.animateWithDuration(1.5, delay: 0.0, options: .CurveEaseIn, animations: { () -> Void in
-                    self.bubbleContainer.frame = CGRect(x: self.bubbleContainer.frame.minX, y: -self.bubbleContainer.frame.height, width: self.bubbleContainer.frame.width / 2, height: self.bubbleContainer.frame.height)
+                    let animatedNewBubbleRect = CGRect(x: self.bubbleContainer.frame.minX + (self.bubbleContainer.frame.width / 4), y: -self.bubbleContainer.frame.height, width: self.bubbleContainer.frame.width / 2, height: self.bubbleContainer.frame.height)
+                    self.bubbleContainer.frame = animatedNewBubbleRect
 
                     }, completion: { (completed) -> Void in
-                        self.bubbleContainer.transform = translatedAndScaledTransformUsingViewRect(self.newBubbleFrame, fromRect: self.originalBubbleFrame)
+                        self.bubbleContainer.frame = bubbleContainerFrame
+                        self.bubbleContainer.transform = translatedAndScaledTransformUsingViewRect(self.blowBubbleButton.frame, fromRect: self.blowBubbleButton.frame)
+                        //                        self.bubbleContainer.frame = CGRect(x: self.blowBubbleButton.frame.minX + self.blowBubbleButton.frame.width * 1/5, y: self.blowBubbleButton.frame.minY + self.blowBubbleButton.frame.height * 1/5, width: self.blowBubbleButton.frame.width * 3/5, height: self.blowBubbleButton.frame.height * 3/5)
+                        //self.bubbleContainer.transform = CGAffineTransformIdentity
                 })
 
-                self.conflictButton.alpha = 0
-                self.confirmButton.alpha = 0
+                self.resetBubbleContainer()
             }
-
-
-
-//            guard error == nil else {
-//
-//            }
-            print(record)
-            print(error)
-
-            //UIView.animateWithDuration(<#T##duration: NSTimeInterval##NSTimeInterval#>, delay: <#T##NSTimeInterval#>, options: <#T##UIViewAnimationOptions#>, animations: <#T##() -> Void#>, completion: <#T##((Bool) -> Void)?##((Bool) -> Void)?##(Bool) -> Void#>)
-
-
         })
     }
 
+    private func resetBubbleContainer() {
+        bubbleTextField.text = ""
+        bubbleTextField.editable = false
+        bubbleTextField.resignFirstResponder()
+        bubbleContainer.frame = self.blowBubbleButton.frame
 
-    //MARK: UI
-    //    @IBAction private func addBubbleTapped() {
-    //        guard CONNECTED_TO_INTERNET else {
-    //            let alert = SCLAlertView()
-    //            alert.showError("Error", subTitle: "Please connect to the internet.")
-    //            return
-    //        }
-    //    }
+        bubbleTextField.transform = CGAffineTransformIdentity
+
+        conflictButton.enabled = true
+        confirmButton.enabled = true
+        blowBubbleButton.enabled = true
+        blowBubbleButton.backgroundColor = ORANGE_COLOR
+
+        conflictButton.alpha = 0
+        confirmButton.alpha = 0
+        conflictButton.enabled = false
+        confirmButton.enabled = false
+    }
+
+    //MARK: U
 
     //MARK: Location
     private func popLocationAlert() {
@@ -205,6 +216,7 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         let alert = SCLAlertView()
         alert.showError("Location Update Failed", subTitle: error.localizedDescription)
+        locationManager.requestLocation()
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -212,5 +224,6 @@ extension MapViewController: CLLocationManagerDelegate {
         usersLocation = locations.last!
         blowBubbleButton.enabled = true
         blowBubbleButton.backgroundColor = ORANGE_COLOR
+        locationManager.requestLocation()
     }
 }

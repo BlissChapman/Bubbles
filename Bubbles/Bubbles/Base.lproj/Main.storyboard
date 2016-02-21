@@ -68,6 +68,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGS-SA-GOI">
                                 <rect key="frame" x="125" y="270" width="50" height="50"/>
                                 <state key="normal" image="Conflict"/>
+                                <connections>
+                                    <action selector="blowCanceledTapped:" destination="kRf-NQ-m3J" eventType="touchUpInside" id="zO7-QU-3MI"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
