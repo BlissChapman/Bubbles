@@ -15,6 +15,9 @@ import CloudKit
 
 class SquidViewController: UIViewController {
 
+    @IBOutlet weak var bubbleBlowingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var map: MKMapView! {
         didSet { map.delegate = self }
     }
@@ -47,7 +50,7 @@ class SquidViewController: UIViewController {
         textViewBubble.backgroundColor = PURPLE_COLOR
         textViewBubble.alpha = 0.0
         textViewBubble.layer.masksToBounds = true
-        textViewBubble.layer.cornerRadius = 10
+        textViewBubble.layer.cornerRadius = 20
 
         //configure squid button
         squidButtonEnabled(false)
@@ -62,7 +65,7 @@ class SquidViewController: UIViewController {
         squidButton.shadowRippleEnable = true
 
         //set up initial state
-        resetBubble()
+        resetBubble(withAnimationDuration: 0)
     }
 
     private func configureLocationManager() {
@@ -126,6 +129,7 @@ class SquidViewController: UIViewController {
     }
 
 
+
     @IBAction func squidButtonLongPressed(sender: UILongPressGestureRecognizer) {
 
         //at this point the user must have a location and they blew their bubble up!
@@ -139,6 +143,50 @@ class SquidViewController: UIViewController {
         }
     }
 
+    @IBAction func confirmButtonTapped(sender: UIButton) {
+        let newBubble = Bubble(withMessage: textViewBubble.text, andLocation: lastUsersLocation!)
+        bubbleBlowingIndicator.startAnimating()
+        textViewBubble.editable = false
+        cancelButton.enabled = false
+        confirmButton.enabled = false
+        newBubble.blow({ (record, error) -> Void in
+            self.updatePoppableBubbles(withCompletion: { () -> () in
+
+                =>~{
+                    self.cancelButton.enabled = true
+
+                    self.textViewBubble.editable = true
+                    self.textViewBubble.resignFirstResponder()
+                    self.bubbleBlowingIndicator.stopAnimating()
+
+                    guard error == nil else {
+                        debugPrint(error)
+                        return
+                    }
+
+                    //successful blow
+                    self.textViewBubble.text = ""
+                    //let currentFrame = self.textViewBubble.frame
+                    UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseOut, animations: { () -> Void in
+                        let animatedNewBubbleRect = CGRect(x: self.textViewBubble.frame.minX + (self.textViewBubble.frame.width / 4), y: -self.textViewBubble.frame.height, width: self.textViewBubble.frame.width / 2, height: self.textViewBubble.frame.height)
+                        self.textViewBubble.frame = animatedNewBubbleRect
+                        self.cancelButton.transform = CGAffineTransformIdentity
+                        self.confirmButton.transform = CGAffineTransformIdentity
+
+                        }, completion: { (completed) -> Void in
+                            //self.textViewBubble.frame = currentFrame
+                            self.resetBubble(withAnimationDuration: 0)
+                    })
+                }
+
+            })
+        })
+    }
+
+    @IBAction func cancelButtonSelected(sender: UIButton) {
+        self.resetBubble(withAnimationDuration: 3)
+    }
+
 
     //MARK: Bubble Animation
     private func blowNewBubble() {
@@ -148,37 +196,73 @@ class SquidViewController: UIViewController {
     }
 
     private func popBubble(withRecord record: CKRecord) {
-
         print("DECIDED TO POP BUBBLE")
+        Cloud.popBubble(record, completionHandler: { (record, error) -> () in
+            guard error == nil else {
+                debugPrint(error)
+                return
+            }
+
+            let message = record!["message"] as! String
+            print("POPPING BUBBLE WITH MESSAGE: \(message)")
+
+            =>~{
+                self.updatePoppableBubbles(withCompletion: { () -> () in
+
+                    self.animateInTextViewBubble(withMessage: message, withCancelButton: true, withConfirmButton: false)
+                })
+            }
+        })
     }
 
-    private func resetBubble() {
+    private func resetBubble(withAnimationDuration duration: NSTimeInterval) {
         UIView.beginAnimations(nil, context: nil)
-        UIView.setAnimationDuration(2.0)
+        UIView.setAnimationDuration(duration)
         UIView.setAnimationCurve(.EaseInOut)
 
-        let scale = CGAffineTransformMakeScale(0.5, 0.5)
-        let translation = CGAffineTransformMakeTranslation(0, squidButton.frame.minY - textViewBubble.frame.minY)
+        let scale = CGAffineTransformMakeScale(0.001, 0.001)
+        let translation = CGAffineTransformMakeTranslation(0, squidButton.frame.minY - textViewBubble.frame.maxY)
         textViewBubble.transform = CGAffineTransformConcat(scale, translation)
 
+        confirmButton.transform = CGAffineTransformMakeTranslation(view.frame.width, 0)
+        cancelButton.transform = CGAffineTransformMakeTranslation(-view.frame.width, 0)
+
         UIView.commitAnimations()
+
+
+        textViewBubble.text = ""
+        textViewBubble.editable = false
+        textViewBubble.resignFirstResponder()
+
+        squidButtonEnabled(true)
     }
 
-    private func animateInTextViewBubble(withMessage message: String? = nil) {
+    private func animateInTextViewBubble(withMessage message: String? = nil, withCancelButton cancel: Bool = true, withConfirmButton confirm: Bool = true) {
 
         textViewBubble.text = (message != nil) ? message : ""
+        textViewBubble.editable = confirm
 
-        UIView.animateWithDuration(2.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: [.CurveEaseOut, .AllowUserInteraction], animations: { () -> Void in
+        UIView.animateWithDuration(3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: [.CurveEaseOut, .AllowUserInteraction], animations: { () -> Void in
 
             self.textViewBubble.alpha = 0.75
             self.textViewBubble.transform = CGAffineTransformIdentity
 
-
             }) { (completed) -> Void in
 
-
+                self.textViewBubble.becomeFirstResponder()
         }
 
+        UIView.animateWithDuration(1, delay: 1.5, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: [.CurveEaseOut], animations: { () -> Void in
+
+            if cancel {
+            self.cancelButton.transform = CGAffineTransformIdentity
+            }
+            if confirm {
+            self.confirmButton.transform = CGAffineTransformIdentity
+            }
+
+            }) { (completion) -> Void in
+        }
     }
 
 
@@ -224,10 +308,10 @@ extension SquidViewController: CLLocationManagerDelegate {
             updatePoppableBubbles(withCompletion: { _ in
                 self.squidButtonEnabled(true)
             })
-
+            
             firstLocationUpdate = false
         }
-
+        
         locationManager.requestLocation()
     }
 }
@@ -235,7 +319,7 @@ extension SquidViewController: CLLocationManagerDelegate {
 extension SquidViewController: MKMapViewDelegate {
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation.isKindOfClass(MKUserLocation) { return nil }
-
+        
         let annotation = MKAnnotationView(annotation: nil, reuseIdentifier: "BUBBLETHING")
         annotation.image = UIImage(named: "BubblePin")
         return annotation
