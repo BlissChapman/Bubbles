@@ -13,20 +13,55 @@ final class Cloud {
     static let database = CKContainer.defaultContainer().publicCloudDatabase
 
     static func fetchAllBubbles(completion: ([CKRecord]?, NSError?)->()) {
-//        NSPredicate *predicate = [NSPredicate predicateWithValue:YES];
-//        CKQuery *query = [[CKQuery alloc] initWithRecordType:@"Strings" predicate:predicate];
-//
-//        [_privateDatabase performQuery:query inZoneWithID:nil completionHandler:^(NSArray *results, NSError *error) {
-//
-//        for (CKRecord *record in results) {
-//        NSLog(@"Contents: %@", [record objectForKey:@"stringArray"]);
-//        }
-//        
-//        }];
-
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "BubbleRecord", predicate: predicate)
 
         database.performQuery(query, inZoneWithID: nil, completionHandler: completion)
+    }
+
+    static func fetchAllPoppableBubbles(withLocation location: CLLocation, completion: ([CKRecord]?, NSError?)->()) {
+        //3 is kilometer range
+        let predicate = NSPredicate(format: "distanceToLocation:fromLocation:(location, %@) < 3", location)
+        let query = CKQuery(recordType: "BubbleRecord", predicate: predicate)
+        query.sortDescriptors = [CKLocationSortDescriptor(key: "location", relativeLocation: location)]
+        database.performQuery(query, inZoneWithID: nil) { (records, error) -> Void in
+
+            guard error == nil else {
+                completion(nil, error!)
+                return
+            }
+
+            var notPoppedBubbles = [CKRecord]()
+            var poppedBubbles = [CKRecord]()
+            if let records = records {
+                for record in records {
+                    if record["isPopped"] as? Int == 0 {
+                        notPoppedBubbles.append(record)
+                    } else {
+                        poppedBubbles.append(record)
+                    }
+                }
+            }
+
+            completion(notPoppedBubbles, nil)
+        }
+    }
+
+    static func popClosestBubbleInRadius(atLocation location: CLLocation, completionHandler: (CKRecord?, NSError?)->()) {
+        fetchAllPoppableBubbles(withLocation: location) { (records, error) -> () in
+            guard error == nil else {
+                debugPrint(error)
+                return
+            }
+
+            if let records = records where records.count > 0 {
+                popBubble(records.first!, completionHandler: completionHandler)
+            }
+        }
+    }
+
+    static func popBubble(record: CKRecord, completionHandler: (CKRecord?, NSError?)->()) {
+        record["isPopped"] = 1
+        database.saveRecord(record, completionHandler: completionHandler)
     }
 }

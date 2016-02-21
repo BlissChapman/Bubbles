@@ -16,6 +16,11 @@ public prefix func =>~ (closure: Void -> Void) {
 }
 
 
+func delay(seconds: NSTimeInterval, OnQueue queue: dispatch_queue_t = dispatch_get_main_queue(), AndExecuteClosure closure: Void -> Void) {
+    let delayLength = dispatch_time(DISPATCH_TIME_NOW, (Int64(seconds) * Int64(NSEC_PER_SEC)))
+    dispatch_after(delayLength, queue, closure)
+}
+
 let TEAL_COLOR = UIColor(red: 30/255, green: 255/255, blue: 244/255, alpha: 1.0)
 let ORANGE_COLOR = UIColor(red: 255/255, green: 148/255, blue: 84/255, alpha: 1.0)
 let PURPLE_COLOR = UIColor(red: 199/255, green: 141/255, blue: 232/255, alpha: 1.0)

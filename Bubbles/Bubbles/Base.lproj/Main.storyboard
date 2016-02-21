@@ -38,7 +38,7 @@
                                 <rect key="frame" x="282" y="136.5" width="37" height="37"/>
                                 <color key="color" red="0.039215686270000001" green="0.078431372550000003" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3s-6x-gWN" customClass="ZFRippleButton" customModule="Bubbles" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3s-6x-gWN" customClass="ZFRippleButton" customModule="Bubbles" customModuleProvider="target">
                                 <rect key="frame" x="240" y="472" width="120" height="120"/>
                                 <color key="backgroundColor" red="0.97647058819999999" green="0.3294117647" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
@@ -49,12 +49,6 @@
                                     <outletCollection property="gestureRecognizers" destination="Sd2-5H-LVx" appends="YES" id="BeF-Ea-gUb"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXC-7F-oZ9">
-                                <rect key="frame" x="288" y="508" width="24.5" height="48"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="40"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MYd-b1-1Cb">
                                 <rect key="frame" x="425" y="270" width="50" height="50"/>
                                 <constraints>
@@ -72,18 +66,21 @@
                                     <action selector="blowCanceledTapped:" destination="kRf-NQ-m3J" eventType="touchUpInside" id="zO7-QU-3MI"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SquidButtonIcon" translatesAutoresizingMaskIntoConstraints="NO" id="P0j-yN-Y6N">
+                                <rect key="frame" x="250" y="482" width="100" height="100"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KXC-7F-oZ9" firstAttribute="centerX" secondItem="N3s-6x-gWN" secondAttribute="centerX" id="11r-NG-Io7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="B2s-8g-eNX" secondAttribute="trailing" constant="25" id="4KJ-8y-pJs"/>
                             <constraint firstItem="wXi-td-7Em" firstAttribute="height" secondItem="N3s-6x-gWN" secondAttribute="height" multiplier="1:5" id="7yR-IC-UGF"/>
                             <constraint firstItem="4ok-RY-4Vq" firstAttribute="top" secondItem="N3s-6x-gWN" secondAttribute="bottom" constant="8" symbolic="YES" id="9X4-q4-dgw"/>
-                            <constraint firstItem="KXC-7F-oZ9" firstAttribute="centerY" secondItem="N3s-6x-gWN" secondAttribute="centerY" id="AYM-ir-6rW"/>
                             <constraint firstItem="AGS-SA-GOI" firstAttribute="height" secondItem="MYd-b1-1Cb" secondAttribute="height" id="IF8-dR-8QN"/>
                             <constraint firstItem="N3s-6x-gWN" firstAttribute="width" secondItem="DGW-GL-mr8" secondAttribute="width" multiplier="1:5" id="Inc-Px-kq6"/>
+                            <constraint firstItem="P0j-yN-Y6N" firstAttribute="height" secondItem="N3s-6x-gWN" secondAttribute="height" multiplier="1:1.2" id="JB3-VC-cUK"/>
                             <constraint firstItem="7QO-sp-beN" firstAttribute="width" secondItem="DGW-GL-mr8" secondAttribute="width" id="KaE-tj-QVw"/>
                             <constraint firstItem="B2s-8g-eNX" firstAttribute="height" secondItem="DGW-GL-mr8" secondAttribute="height" multiplier="1:4" id="M5z-k3-N7c"/>
+                            <constraint firstItem="P0j-yN-Y6N" firstAttribute="width" secondItem="N3s-6x-gWN" secondAttribute="width" multiplier="1:1.2" id="NQU-eS-mQg"/>
                             <constraint firstItem="AGS-SA-GOI" firstAttribute="top" secondItem="B2s-8g-eNX" secondAttribute="bottom" constant="40" id="QgZ-uW-9Pg"/>
                             <constraint firstItem="7QO-sp-beN" firstAttribute="centerY" secondItem="DGW-GL-mr8" secondAttribute="centerY" id="T8o-kf-j1w"/>
                             <constraint firstItem="AGS-SA-GOI" firstAttribute="width" secondItem="MYd-b1-1Cb" secondAttribute="width" id="bNU-fn-SgH"/>
@@ -94,10 +91,12 @@
                             <constraint firstItem="N3s-6x-gWN" firstAttribute="centerX" secondItem="DGW-GL-mr8" secondAttribute="centerX" id="jok-yh-6uv"/>
                             <constraint firstItem="wXi-td-7Em" firstAttribute="centerY" secondItem="N3s-6x-gWN" secondAttribute="centerY" id="kD5-hY-Xjr"/>
                             <constraint firstItem="AGS-SA-GOI" firstAttribute="centerX" secondItem="B2s-8g-eNX" secondAttribute="centerX" multiplier="1:2" id="kMc-fn-bg4"/>
+                            <constraint firstItem="P0j-yN-Y6N" firstAttribute="centerX" secondItem="N3s-6x-gWN" secondAttribute="centerX" id="kiv-83-gTY"/>
                             <constraint firstItem="wXi-td-7Em" firstAttribute="centerX" secondItem="N3s-6x-gWN" secondAttribute="centerX" id="lav-Du-hjm"/>
                             <constraint firstItem="AGS-SA-GOI" firstAttribute="width" secondItem="AGS-SA-GOI" secondAttribute="height" multiplier="1:1" id="mo5-48-DF1"/>
                             <constraint firstItem="Vja-gU-W43" firstAttribute="centerX" secondItem="B2s-8g-eNX" secondAttribute="centerX" id="o5f-8r-upm"/>
                             <constraint firstItem="B2s-8g-eNX" firstAttribute="top" secondItem="yiz-gT-HOi" secondAttribute="bottom" constant="60" id="qRN-ki-o3s"/>
+                            <constraint firstItem="P0j-yN-Y6N" firstAttribute="centerY" secondItem="N3s-6x-gWN" secondAttribute="centerY" id="tGG-lL-G1d"/>
                             <constraint firstItem="MYd-b1-1Cb" firstAttribute="centerX" secondItem="B2s-8g-eNX" secondAttribute="centerX" multiplier="1.5" id="unk-YC-R9G"/>
                             <constraint firstItem="B2s-8g-eNX" firstAttribute="leading" secondItem="DGW-GL-mr8" secondAttribute="leadingMargin" constant="25" id="v6U-er-4GL"/>
                             <constraint firstItem="Vja-gU-W43" firstAttribute="centerY" secondItem="B2s-8g-eNX" secondAttribute="centerY" id="vWQ-rf-Ivb"/>
@@ -113,7 +112,6 @@
                     <connections>
                         <outlet property="addPressGestureRecognizer" destination="Sd2-5H-LVx" id="9YV-nR-bjF"/>
                         <outlet property="blowBubbleButton" destination="N3s-6x-gWN" id="lnG-yD-Piu"/>
-                        <outlet property="blowBubbleButtonLabel" destination="KXC-7F-oZ9" id="q1m-So-wtf"/>
                         <outlet property="blowingLoadingSymbol" destination="Vja-gU-W43" id="9bO-sx-cX5"/>
                         <outlet property="bubbleContainer" destination="wXi-td-7Em" id="DpX-PU-Fsw"/>
                         <outlet property="bubbleTextField" destination="B2s-8g-eNX" id="a7F-cU-VAQ"/>
@@ -221,5 +219,6 @@
     <resources>
         <image name="Checkmark" width="100" height="100"/>
         <image name="Conflict" width="100" height="100"/>
+        <image name="SquidButtonIcon" width="1200" height="1200"/>
     </resources>
 </document>

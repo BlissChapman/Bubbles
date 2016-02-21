@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import SCLAlertView
+import CloudKit
 
 class MapViewController: UIViewController {
 
@@ -21,7 +22,6 @@ class MapViewController: UIViewController {
     @IBOutlet weak var bubbleTextField: UITextView!
     @IBOutlet weak var bubbleContainer: UIView!
     @IBOutlet var addPressGestureRecognizer: UILongPressGestureRecognizer!
-    @IBOutlet weak var blowBubbleButtonLabel: UILabel!
     @IBOutlet weak var blowBubbleButton: ZFRippleButton!
     @IBOutlet weak var mapBackground: MKMapView!
 
@@ -29,6 +29,13 @@ class MapViewController: UIViewController {
     private var usersLocation: CLLocation?
     var newBubbleFrame: CGRect!
     var originalBubbleFrame: CGRect!
+    var firstUpdate = true
+
+    var nearbyBubbles: [CKRecord]? {
+        didSet {
+            print("THERE ARE \(nearbyBubbles!.count) BUBBLES TO POP HERE")
+        }
+    }
 
     //MARK: View Controller Lifecycle
     override func viewDidLoad() {
@@ -47,7 +54,6 @@ class MapViewController: UIViewController {
     private func configureUI() {
         blowBubbleButton.backgroundColor = .grayColor()
         blowBubbleButton.layer.masksToBounds = true
-        //bubbleContainer.layer.masksToBounds = true
         bubbleContainer.layer.cornerRadius = bubbleContainer.bounds.size.height/10
         bubbleContainer.backgroundColor = PURPLE_COLOR
 
@@ -57,6 +63,7 @@ class MapViewController: UIViewController {
 
         bubbleTextField.editable = false
         bubbleTextField.alpha = 0
+        mapBackground.delegate = self
 
         blowBubbleButton.buttonCornerRadius = Float(blowBubbleButton.bounds.size.height/2)
         blowBubbleButton.rippleBackgroundColor = ORANGE_COLOR
@@ -89,11 +96,22 @@ class MapViewController: UIViewController {
             return
         }
 
-
         if sender.state == .Began {
             //held it long enough
-            blowBubbleButton.enabled = false
-            blowBubbleButton.backgroundColor = .grayColor()
+            scanOrAddBubble()
+
+        } else if sender.state == .Failed {
+            sender.enabled = false
+            sender.enabled = true
+        }
+    }
+
+    private func scanOrAddBubble() {
+
+        let blowBubble: ()->() = {
+            print("BLOWING NEW BUBBLE")
+            self.blowBubbleButton.enabled = false
+            self.blowBubbleButton.backgroundColor = .grayColor()
 
             UIView.animateWithDuration(3, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 1.5, options: [.CurveEaseOut, .AllowUserInteraction], animations: { () -> Void in
 
@@ -113,10 +131,46 @@ class MapViewController: UIViewController {
                     self.bubbleTextField.editable = true
                     self.bubbleTextField.becomeFirstResponder()
             })
+        }
 
-        } else if sender.state == .Failed {
-            sender.enabled = false
-            sender.enabled = true
+        let popBubble: (record: CKRecord)->() = { record in
+
+            Cloud.popBubble(record, completionHandler: { (record, error) -> () in
+                guard error == nil else {
+                    debugPrint(error)
+                    return
+                }
+
+                let message = record!["message"] as! String
+
+                =>~{
+                    self.reloadMapPins()
+                    print("POPPING BUBBLE WITH MESSAGE: \(message)")
+
+                    self.bubbleTextField.text = message
+                    UIView.animateWithDuration(3, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 1.5, options: [.CurveEaseOut, .AllowUserInteraction], animations: { () -> Void in
+
+                        self.bubbleContainer.transform = translatedAndScaledTransformUsingViewRect(self.newBubbleFrame, fromRect: self.originalBubbleFrame)
+
+                        UIView.animateWithDuration(1.0, delay: 1.5, options: .CurveEaseOut, animations: { () -> Void in
+                            self.conflictButton.alpha = 1.0
+                            self.conflictButton.enabled = true
+
+                            }, completion: nil)
+
+                        }, completion: { (completed) -> Void in
+
+                            self.bubbleTextField.alpha = 1.0
+                            self.bubbleTextField.editable = false
+                    })
+                }
+            })
+        }
+
+        if let poppableBubbles = nearbyBubbles where poppableBubbles.count > 0 {
+            popBubble(record: poppableBubbles.first!)
+        } else {
+            blowBubble()
         }
     }
 
@@ -133,37 +187,37 @@ class MapViewController: UIViewController {
         confirmButton.enabled = false
         newBubble.blow({ (record, error) -> Void in
 
-            =>~{
-                self.conflictButton.enabled = true
+            print("NEW WAY")
 
-                self.bubbleTextField.editable = true
-                self.bubbleTextField.resignFirstResponder()
-                self.blowingLoadingSymbol.stopAnimating()
+            delay(2.0, AndExecuteClosure: { () -> Void in
+                self.reloadMapPins(withCompletion: { () -> () in
+                    =>~{
+                        self.conflictButton.enabled = true
 
-                guard error == nil else {
-                    debugPrint(error)
-                    return
-                }
+                        self.bubbleTextField.editable = true
+                        self.bubbleTextField.resignFirstResponder()
+                        self.blowingLoadingSymbol.stopAnimating()
 
-                //successful blow
-                self.bubbleTextField.text = ""
-                let bubbleContainerFrame = self.bubbleContainer.frame
-                UIView.animateWithDuration(1.5, delay: 0.0, options: .CurveEaseIn, animations: { () -> Void in
-                    let animatedNewBubbleRect = CGRect(x: self.bubbleContainer.frame.minX + (self.bubbleContainer.frame.width / 4), y: -self.bubbleContainer.frame.height, width: self.bubbleContainer.frame.width / 2, height: self.bubbleContainer.frame.height)
-                    self.bubbleContainer.frame = animatedNewBubbleRect
-                    self.conflictButton.alpha = 0
-                    self.confirmButton.alpha = 0
+                        guard error == nil else {
+                            debugPrint(error)
+                            return
+                        }
 
-                    }, completion: { (completed) -> Void in
-                        //put frame back to where it was before animation
-                        self.bubbleContainer.frame = bubbleContainerFrame
-                        //self.bubbleContainer.transform = translatedAndScaledTransformUsingViewRect(bubbleContainerFrame, fromRect: self.blowBubbleButton.frame)
-                        self.resetBubbleContainer()
+                        //successful blow
+                        self.bubbleTextField.text = ""
+                        UIView.animateWithDuration(1.5, delay: 0.0, options: .CurveEaseIn, animations: { () -> Void in
+                            let animatedNewBubbleRect = CGRect(x: self.bubbleContainer.frame.minX + (self.bubbleContainer.frame.width / 4), y: -self.bubbleContainer.frame.height, width: self.bubbleContainer.frame.width / 2, height: self.bubbleContainer.frame.height)
+                            self.bubbleContainer.frame = animatedNewBubbleRect
+                            self.conflictButton.alpha = 0
+                            self.confirmButton.alpha = 0
 
-                        //                        self.bubbleContainer.frame = CGRect(x: self.blowBubbleButton.frame.minX + self.blowBubbleButton.frame.width * 1/5, y: self.blowBubbleButton.frame.minY + self.blowBubbleButton.frame.height * 1/5, width: self.blowBubbleButton.frame.width * 3/5, height: self.blowBubbleButton.frame.height * 3/5)
-                        //self.bubbleContainer.transform = CGAffineTransformIdentity
+                            }, completion: { (completed) -> Void in
+                                //put frame back to where it was before animation
+                                self.resetBubbleContainer()
+                        })
+                    }
                 })
-            }
+            })
         })
     }
 
@@ -171,10 +225,8 @@ class MapViewController: UIViewController {
         bubbleTextField.text = ""
         bubbleTextField.editable = false
         bubbleTextField.resignFirstResponder()
-        //bubbleContainer.frame = self.blowBubbleButton.frame
 
-        self.bubbleContainer.transform = translatedAndScaledTransformUsingViewRect(self.originalBubbleFrame, fromRect: self.newBubbleFrame)
-        //bubbleTextField.transform = CGAffineTransformIdentity
+        bubbleContainer.transform = translatedAndScaledTransformUsingViewRect(self.originalBubbleFrame, fromRect: self.bubbleContainer.frame)
 
         conflictButton.enabled = true
         confirmButton.enabled = true
@@ -185,9 +237,35 @@ class MapViewController: UIViewController {
         confirmButton.alpha = 0
         conflictButton.enabled = false
         confirmButton.enabled = false
+
+
     }
 
-    //MARK: U
+    //MARK: UI
+    private func reloadMapPins(withCompletion completion: (()->())? = nil) {
+        print("RELOADNG MAP PINS")
+        let annotationsToRemove = mapBackground.annotations.filter { $0 !== mapBackground.userLocation }
+        mapBackground.removeAnnotations( annotationsToRemove )
+        Cloud.fetchAllPoppableBubbles(withLocation: usersLocation!) { (records, error) -> () in
+            dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0), { () -> Void in
+                self.nearbyBubbles = records
+
+                var allAnnotations = [MKAnnotation]()
+                for record in records! {
+                    if let recordLocation = record["location"] as? CLLocation {
+                        let defaultPinAnnotation = MKPointAnnotation()
+                        defaultPinAnnotation.coordinate = recordLocation.coordinate
+                        allAnnotations.append(defaultPinAnnotation)
+                    }
+                }
+
+                =>~{
+                    self.mapBackground.addAnnotations(allAnnotations)
+                    completion?()
+                }
+            })
+        }
+    }
 
     //MARK: Location
     private func popLocationAlert() {
@@ -219,16 +297,36 @@ extension MapViewController: CLLocationManagerDelegate {
     }
 
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        let alert = SCLAlertView()
-        alert.showError("Location Update Failed", subTitle: error.localizedDescription)
+        print("LOCATION UPDATE FAILED")
+        //let alert = SCLAlertView()
+        //alert.showError("Location Update Failed", subTitle: error.localizedDescription)
         locationManager.requestLocation()
     }
-    
+
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        zoomMap(withLocation: locations.last!)
         usersLocation = locations.last!
-        blowBubbleButton.enabled = true
-        blowBubbleButton.backgroundColor = ORANGE_COLOR
+
+        if firstUpdate {
+            zoomMap(withLocation: locations.last!)
+
+            reloadMapPins(withCompletion: { _ in
+                self.blowBubbleButton.enabled = true
+                self.blowBubbleButton.backgroundColor = ORANGE_COLOR
+            })
+
+            firstUpdate = false
+        }
+
         locationManager.requestLocation()
+    }
+}
+
+extension MapViewController: MKMapViewDelegate {
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation.isKindOfClass(MKUserLocation) { return nil }
+        
+        let annotation = MKAnnotationView(annotation: nil, reuseIdentifier: "BUBBLETHING")
+        annotation.image = UIImage(named: "BubblePin")
+        return annotation
     }
 }

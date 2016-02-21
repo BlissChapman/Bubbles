@@ -23,10 +23,17 @@ final class Bubble {
 
     func blow(completionHandler: (CKRecord?, NSError?) -> Void) {
         let record = CKRecord(recordType: "BubbleRecord", recordID: CKRecordID(recordName: NSUUID().UUIDString))
-        record["isPopped"] = false
+        record["isPopped"] = 0
         record["location"] = location
         record["message"] = message
 
-        Cloud.database.saveRecord(record, completionHandler: completionHandler)
+        let operation = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
+        operation.perRecordCompletionBlock = completionHandler
+        operation.savePolicy = .AllKeys
+
+        Cloud.database.addOperation(operation)
+        Cloud.database.saveRecord(record) { (record, error) -> Void in
+            print("NORMAL WAY")
+        }
     }
 }
