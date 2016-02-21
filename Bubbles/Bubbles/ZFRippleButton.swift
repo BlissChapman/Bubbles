@@ -9,6 +9,9 @@
 import UIKit
 import QuartzCore
 
+
+public let kBubbleBlowLength: NSTimeInterval = 2
+
 @IBDesignable
 public class ZFRippleButton: UIButton {
     
@@ -111,7 +114,7 @@ public class ZFRippleButton: UIButton {
         
         rippleView.transform = CGAffineTransformMakeScale(0.5, 0.5)
         
-        UIView.animateWithDuration(0.7, delay: 0, options: .CurveEaseOut,
+        UIView.animateWithDuration(kBubbleBlowLength + 1.0, delay: 0, options: .CurveEaseOut,
             animations: {
                 self.rippleView.transform = CGAffineTransformIdentity
             }, completion: nil)

@@ -25,3 +25,19 @@ get {
     return Reachability.reachabilityForInternetConnection().currentReachabilityStatus().rawValue != NotReachable.rawValue
 }
 }
+
+func translatedAndScaledTransformUsingViewRect(viewRect: CGRect, fromRect: CGRect) -> CGAffineTransform {
+    //    CGSize scales = CGSizeMake(viewRect.size.width/fromRect.size.width, viewRect.size.height/fromRect.size.height);
+    //    CGPoint offset = CGPointMake(CGRectGetMidX(viewRect) - CGRectGetMidX(fromRect), CGRectGetMidY(viewRect) - CGRectGetMidY(fromRect));
+    //    return CGAffineTransformMake(scales.width, 0, 0, scales.height, offset.x, offset.y);
+
+    let scales = CGSizeMake(viewRect.size.width/fromRect.size.width, viewRect.size.height/fromRect.size.height)
+    let offset = CGPointMake(CGRectGetMidX(viewRect) - CGRectGetMidX(fromRect), CGRectGetMidY(viewRect) - CGRectGetMidY(fromRect))
+    return CGAffineTransformMake(scales.width, 0, 0, scales.height, offset.x, offset.y)
+}
+//
+//- (CGAffineTransform)translatedAndScaledTransformUsingViewRect:(CGRect)viewRect fromRect:(CGRect)fromRect {
+//
+
+//    
+//}
