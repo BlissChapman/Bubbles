@@ -146,19 +146,22 @@ class MapViewController: UIViewController {
                 }
 
                 //successful blow
+                self.bubbleTextField.text = ""
                 let bubbleContainerFrame = self.bubbleContainer.frame
                 UIView.animateWithDuration(1.5, delay: 0.0, options: .CurveEaseIn, animations: { () -> Void in
                     let animatedNewBubbleRect = CGRect(x: self.bubbleContainer.frame.minX + (self.bubbleContainer.frame.width / 4), y: -self.bubbleContainer.frame.height, width: self.bubbleContainer.frame.width / 2, height: self.bubbleContainer.frame.height)
                     self.bubbleContainer.frame = animatedNewBubbleRect
+                    self.conflictButton.alpha = 0
+                    self.confirmButton.alpha = 0
 
                     }, completion: { (completed) -> Void in
-                        self.bubbleContainer.frame = bubbleContainerFrame
-                        self.bubbleContainer.transform = translatedAndScaledTransformUsingViewRect(self.blowBubbleButton.frame, fromRect: self.blowBubbleButton.frame)
+                        //self.bubbleContainer.frame = bubbleContainerFrame
+                        self.bubbleContainer.transform = translatedAndScaledTransformUsingViewRect(bubbleContainerFrame, fromRect: self.blowBubbleButton.frame)
+                        self.resetBubbleContainer()
+
                         //                        self.bubbleContainer.frame = CGRect(x: self.blowBubbleButton.frame.minX + self.blowBubbleButton.frame.width * 1/5, y: self.blowBubbleButton.frame.minY + self.blowBubbleButton.frame.height * 1/5, width: self.blowBubbleButton.frame.width * 3/5, height: self.blowBubbleButton.frame.height * 3/5)
                         //self.bubbleContainer.transform = CGAffineTransformIdentity
                 })
-
-                self.resetBubbleContainer()
             }
         })
     }
