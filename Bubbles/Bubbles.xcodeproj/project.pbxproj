@@ -22,6 +22,8 @@
 		A58E3BD41C78D2FC00768E4B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A58E3BD31C78D2FC00768E4B /* Reachability.m */; };
 		A58E3BD61C78DA6100768E4B /* ZFRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58E3BD51C78DA6100768E4B /* ZFRippleButton.swift */; };
 		A58E3BDA1C79AF2900768E4B /* SquidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58E3BD91C79AF2900768E4B /* SquidViewController.swift */; };
+		A5A854C51C7A1AEB00BBA1AF /* Pop.wav in Resources */ = {isa = PBXBuildFile; fileRef = A5A854C41C7A1AEB00BBA1AF /* Pop.wav */; };
+		A5A854C71C7A1C0600BBA1AF /* Blow.wav in Resources */ = {isa = PBXBuildFile; fileRef = A5A854C61C7A1C0600BBA1AF /* Blow.wav */; };
 		B643F3D9ECF24324E02D3947 /* Pods_Bubbles.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A8E8582964855E859EE3C1F /* Pods_Bubbles.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +71,8 @@
 		A58E3BD31C78D2FC00768E4B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		A58E3BD51C78DA6100768E4B /* ZFRippleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZFRippleButton.swift; sourceTree = "<group>"; };
 		A58E3BD91C79AF2900768E4B /* SquidViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquidViewController.swift; sourceTree = "<group>"; };
+		A5A854C41C7A1AEB00BBA1AF /* Pop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Pop.wav; sourceTree = "<group>"; };
+		A5A854C61C7A1C0600BBA1AF /* Blow.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Blow.wav; sourceTree = "<group>"; };
 		A5CB3DBB81DC2A48F686336D /* Pods-Bubbles.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bubbles.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bubbles/Pods-Bubbles.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -181,6 +185,8 @@
 				A56F2B421C78208C008B5F90 /* LaunchScreen.storyboard */,
 				A58E3BD21C78D2FC00768E4B /* Reachability.h */,
 				A58E3BD31C78D2FC00768E4B /* Reachability.m */,
+				A5A854C61C7A1C0600BBA1AF /* Blow.wav */,
+				A5A854C41C7A1AEB00BBA1AF /* Pop.wav */,
 				A56F2B451C78208C008B5F90 /* Info.plist */,
 				A58E3BD51C78DA6100768E4B /* ZFRippleButton.swift */,
 				A58E3BD11C78D2FC00768E4B /* Bubbles-Bridging-Header.h */,
@@ -313,6 +319,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5A854C71C7A1C0600BBA1AF /* Blow.wav in Resources */,
+				A5A854C51C7A1AEB00BBA1AF /* Pop.wav in Resources */,
 				A56F2B441C78208C008B5F90 /* LaunchScreen.storyboard in Resources */,
 				A56F2B411C78208C008B5F90 /* Assets.xcassets in Resources */,
 				A56F2B3F1C78208C008B5F90 /* Main.storyboard in Resources */,

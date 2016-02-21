@@ -18,17 +18,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SquidButtonIconV2" translatesAutoresizingMaskIntoConstraints="NO" id="cwM-Fc-p5W">
-                                <rect key="frame" x="150" y="150" width="300" height="300"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SquidBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Cip-XS-zoA">
+                                <rect key="frame" x="-150" y="-150" width="900" height="900"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.99215686274509807" green="0.50196078431372548" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="cwM-Fc-p5W" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="1:2" id="Fvw-xK-CKC"/>
-                            <constraint firstItem="cwM-Fc-p5W" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="1:2" id="Ilr-Yr-Cx1"/>
-                            <constraint firstItem="cwM-Fc-p5W" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="WE5-3h-Lr4"/>
-                            <constraint firstItem="cwM-Fc-p5W" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="uum-cI-nSt"/>
+                            <constraint firstItem="Cip-XS-zoA" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="1.5:1" id="09b-ed-Fh9"/>
+                            <constraint firstItem="Cip-XS-zoA" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="QCK-9k-p6g"/>
+                            <constraint firstItem="Cip-XS-zoA" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="1.5:1" id="RuF-T5-aRf"/>
+                            <constraint firstItem="Cip-XS-zoA" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="uRA-oC-VWW"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -38,6 +37,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="SquidButtonIconV2" width="1200" height="1200"/>
+        <image name="SquidBackground" width="1080" height="1920"/>
     </resources>
 </document>

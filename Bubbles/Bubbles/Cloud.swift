@@ -39,6 +39,14 @@ final class Cloud {
 
     static func popBubble(record: CKRecord, completionHandler: (CKRecord?, NSError?)->()) {
         record["isPopped"] = 1
+
+        let operation = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
+        operation.perRecordCompletionBlock = completionHandler
+        operation.queuePriority = .VeryHigh
+        operation.savePolicy = .AllKeys
+
+        Cloud.database.addOperation(operation)
+
         database.saveRecord(record, completionHandler: completionHandler)
     }
 }

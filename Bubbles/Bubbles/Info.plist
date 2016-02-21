@@ -27,7 +27,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We use your location to blow and pop bubbles near you!</string>
 	<key>UILaunchStoryboardName</key>
-	<string>Main</string>
+	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
