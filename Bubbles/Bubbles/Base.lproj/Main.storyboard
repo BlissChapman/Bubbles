@@ -8,127 +8,6 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Map View Controller-->
-        <scene sceneID="nxb-ZE-6Hm">
-            <objects>
-                <viewController id="kRf-NQ-m3J" customClass="MapViewController" customModule="Bubbles" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="yiz-gT-HOi"/>
-                        <viewControllerLayoutGuide type="bottom" id="4ok-RY-4Vq"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="DGW-GL-mr8">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7QO-sp-beN">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                            </mapView>
-                            <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wXi-td-7Em">
-                                <rect key="frame" x="288" y="520" width="24" height="24"/>
-                                <color key="backgroundColor" red="0.97647058819999999" green="0.3294117647" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="B2s-8g-eNX">
-                                <rect key="frame" x="45" y="80" width="510" height="150"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="textColor" red="0.039215686270000001" green="0.078431372550000003" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Vja-gU-W43">
-                                <rect key="frame" x="282" y="136.5" width="37" height="37"/>
-                                <color key="color" red="0.039215686270000001" green="0.078431372550000003" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                            </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3s-6x-gWN" customClass="ZFRippleButton" customModule="Bubbles" customModuleProvider="target">
-                                <rect key="frame" x="240" y="472" width="120" height="120"/>
-                                <color key="backgroundColor" red="0.97647058819999999" green="0.3294117647" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="N3s-6x-gWN" secondAttribute="height" multiplier="1:1" id="WuD-Ad-Z7T"/>
-                                </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Sd2-5H-LVx" appends="YES" id="BeF-Ea-gUb"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MYd-b1-1Cb">
-                                <rect key="frame" x="425" y="270" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="MYd-b1-1Cb" secondAttribute="height" multiplier="1:1" id="AIi-YJ-6v3"/>
-                                </constraints>
-                                <state key="normal" image="Checkmark"/>
-                                <connections>
-                                    <action selector="blowButtonTapped:" destination="kRf-NQ-m3J" eventType="touchUpInside" id="bcz-v9-pUU"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGS-SA-GOI">
-                                <rect key="frame" x="125" y="270" width="50" height="50"/>
-                                <state key="normal" image="Conflict"/>
-                                <connections>
-                                    <action selector="blowCanceledTapped:" destination="kRf-NQ-m3J" eventType="touchUpInside" id="zO7-QU-3MI"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SquidButtonIcon" translatesAutoresizingMaskIntoConstraints="NO" id="P0j-yN-Y6N">
-                                <rect key="frame" x="250" y="482" width="100" height="100"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="B2s-8g-eNX" secondAttribute="trailing" constant="25" id="4KJ-8y-pJs"/>
-                            <constraint firstItem="wXi-td-7Em" firstAttribute="height" secondItem="N3s-6x-gWN" secondAttribute="height" multiplier="1:5" id="7yR-IC-UGF"/>
-                            <constraint firstItem="4ok-RY-4Vq" firstAttribute="top" secondItem="N3s-6x-gWN" secondAttribute="bottom" constant="8" symbolic="YES" id="9X4-q4-dgw"/>
-                            <constraint firstItem="AGS-SA-GOI" firstAttribute="height" secondItem="MYd-b1-1Cb" secondAttribute="height" id="IF8-dR-8QN"/>
-                            <constraint firstItem="N3s-6x-gWN" firstAttribute="width" secondItem="DGW-GL-mr8" secondAttribute="width" multiplier="1:5" id="Inc-Px-kq6"/>
-                            <constraint firstItem="P0j-yN-Y6N" firstAttribute="height" secondItem="N3s-6x-gWN" secondAttribute="height" multiplier="1:1.2" id="JB3-VC-cUK"/>
-                            <constraint firstItem="7QO-sp-beN" firstAttribute="width" secondItem="DGW-GL-mr8" secondAttribute="width" id="KaE-tj-QVw"/>
-                            <constraint firstItem="B2s-8g-eNX" firstAttribute="height" secondItem="DGW-GL-mr8" secondAttribute="height" multiplier="1:4" id="M5z-k3-N7c"/>
-                            <constraint firstItem="P0j-yN-Y6N" firstAttribute="width" secondItem="N3s-6x-gWN" secondAttribute="width" multiplier="1:1.2" id="NQU-eS-mQg"/>
-                            <constraint firstItem="AGS-SA-GOI" firstAttribute="top" secondItem="B2s-8g-eNX" secondAttribute="bottom" constant="40" id="QgZ-uW-9Pg"/>
-                            <constraint firstItem="7QO-sp-beN" firstAttribute="centerY" secondItem="DGW-GL-mr8" secondAttribute="centerY" id="T8o-kf-j1w"/>
-                            <constraint firstItem="AGS-SA-GOI" firstAttribute="width" secondItem="MYd-b1-1Cb" secondAttribute="width" id="bNU-fn-SgH"/>
-                            <constraint firstItem="MYd-b1-1Cb" firstAttribute="top" secondItem="B2s-8g-eNX" secondAttribute="bottom" constant="40" id="bah-2f-ShH"/>
-                            <constraint firstItem="wXi-td-7Em" firstAttribute="width" secondItem="N3s-6x-gWN" secondAttribute="width" multiplier="1:5" id="d5L-wC-P5C"/>
-                            <constraint firstItem="MYd-b1-1Cb" firstAttribute="height" secondItem="B2s-8g-eNX" secondAttribute="height" multiplier="1:3" id="gJx-On-43m"/>
-                            <constraint firstItem="7QO-sp-beN" firstAttribute="centerX" secondItem="DGW-GL-mr8" secondAttribute="centerX" id="isC-xs-Wz6"/>
-                            <constraint firstItem="N3s-6x-gWN" firstAttribute="centerX" secondItem="DGW-GL-mr8" secondAttribute="centerX" id="jok-yh-6uv"/>
-                            <constraint firstItem="wXi-td-7Em" firstAttribute="centerY" secondItem="N3s-6x-gWN" secondAttribute="centerY" id="kD5-hY-Xjr"/>
-                            <constraint firstItem="AGS-SA-GOI" firstAttribute="centerX" secondItem="B2s-8g-eNX" secondAttribute="centerX" multiplier="1:2" id="kMc-fn-bg4"/>
-                            <constraint firstItem="P0j-yN-Y6N" firstAttribute="centerX" secondItem="N3s-6x-gWN" secondAttribute="centerX" id="kiv-83-gTY"/>
-                            <constraint firstItem="wXi-td-7Em" firstAttribute="centerX" secondItem="N3s-6x-gWN" secondAttribute="centerX" id="lav-Du-hjm"/>
-                            <constraint firstItem="AGS-SA-GOI" firstAttribute="width" secondItem="AGS-SA-GOI" secondAttribute="height" multiplier="1:1" id="mo5-48-DF1"/>
-                            <constraint firstItem="Vja-gU-W43" firstAttribute="centerX" secondItem="B2s-8g-eNX" secondAttribute="centerX" id="o5f-8r-upm"/>
-                            <constraint firstItem="B2s-8g-eNX" firstAttribute="top" secondItem="yiz-gT-HOi" secondAttribute="bottom" constant="60" id="qRN-ki-o3s"/>
-                            <constraint firstItem="P0j-yN-Y6N" firstAttribute="centerY" secondItem="N3s-6x-gWN" secondAttribute="centerY" id="tGG-lL-G1d"/>
-                            <constraint firstItem="MYd-b1-1Cb" firstAttribute="centerX" secondItem="B2s-8g-eNX" secondAttribute="centerX" multiplier="1.5" id="unk-YC-R9G"/>
-                            <constraint firstItem="B2s-8g-eNX" firstAttribute="leading" secondItem="DGW-GL-mr8" secondAttribute="leadingMargin" constant="25" id="v6U-er-4GL"/>
-                            <constraint firstItem="Vja-gU-W43" firstAttribute="centerY" secondItem="B2s-8g-eNX" secondAttribute="centerY" id="vWQ-rf-Ivb"/>
-                            <constraint firstItem="7QO-sp-beN" firstAttribute="height" secondItem="DGW-GL-mr8" secondAttribute="height" id="y8u-9F-11q"/>
-                            <constraint firstItem="AGS-SA-GOI" firstAttribute="centerY" secondItem="MYd-b1-1Cb" secondAttribute="centerY" id="yvD-hO-mgL"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="QgZ-uW-9Pg"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <connections>
-                        <outlet property="addPressGestureRecognizer" destination="Sd2-5H-LVx" id="9YV-nR-bjF"/>
-                        <outlet property="blowBubbleButton" destination="N3s-6x-gWN" id="lnG-yD-Piu"/>
-                        <outlet property="blowingLoadingSymbol" destination="Vja-gU-W43" id="9bO-sx-cX5"/>
-                        <outlet property="bubbleContainer" destination="wXi-td-7Em" id="DpX-PU-Fsw"/>
-                        <outlet property="bubbleTextField" destination="B2s-8g-eNX" id="a7F-cU-VAQ"/>
-                        <outlet property="confirmButton" destination="MYd-b1-1Cb" id="QEu-Mc-aOm"/>
-                        <outlet property="conflictButton" destination="AGS-SA-GOI" id="V15-r9-GUL"/>
-                        <outlet property="mapBackground" destination="7QO-sp-beN" id="cie-gC-Fiz"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2bt-kz-Xva" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="20" minimumPressDuration="5" id="Sd2-5H-LVx">
-                    <connections>
-                        <action selector="addBubbleTapped:" destination="kRf-NQ-m3J" id="dxu-pt-UV2"/>
-                    </connections>
-                </pongPressGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="908" y="452"/>
-        </scene>
         <!--Squid View Controller-->
         <scene sceneID="q40-Zv-ImE">
             <objects>
@@ -156,7 +35,6 @@
                                 <rect key="frame" x="128.5" y="236" width="43" height="43"/>
                                 <state key="normal" image="Conflict"/>
                                 <connections>
-                                    <action selector="blowCanceledTapped:" destination="kRf-NQ-m3J" eventType="touchUpInside" id="uho-Dy-Drg"/>
                                     <action selector="cancelButtonSelected:" destination="CUC-uF-5tt" eventType="touchUpInside" id="KON-tq-yZu"/>
                                 </connections>
                             </button>
@@ -167,7 +45,6 @@
                                 </constraints>
                                 <state key="normal" image="Checkmark"/>
                                 <connections>
-                                    <action selector="blowButtonTapped:" destination="kRf-NQ-m3J" eventType="touchUpInside" id="JHw-VJ-HVX"/>
                                     <action selector="confirmButtonTapped:" destination="CUC-uF-5tt" eventType="touchUpInside" id="jl8-Tr-N55"/>
                                 </connections>
                             </button>
@@ -303,7 +180,6 @@
     <resources>
         <image name="Checkmark" width="100" height="100"/>
         <image name="Conflict" width="100" height="100"/>
-        <image name="SquidButtonIcon" width="1200" height="1200"/>
         <image name="SquidButtonIconV2" width="1200" height="1200"/>
     </resources>
 </document>

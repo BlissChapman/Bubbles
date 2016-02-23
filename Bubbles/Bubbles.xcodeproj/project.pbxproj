@@ -17,7 +17,6 @@
 		A56F2B6B1C78244B008B5F90 /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56F2B6A1C78244B008B5F90 /* Cloud.swift */; };
 		A56F2B6D1C782453008B5F90 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56F2B6C1C782453008B5F90 /* Bubble.swift */; };
 		A58A7E991C78C31E008ACC90 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58A7E981C78C31E008ACC90 /* Utilities.swift */; };
-		A58E3BCB1C78CB9B00768E4B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58E3BCA1C78CB9B00768E4B /* MapViewController.swift */; };
 		A58E3BCD1C78CBBA00768E4B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A58E3BCC1C78CBBA00768E4B /* MapKit.framework */; };
 		A58E3BD41C78D2FC00768E4B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A58E3BD31C78D2FC00768E4B /* Reachability.m */; };
 		A58E3BD61C78DA6100768E4B /* ZFRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58E3BD51C78DA6100768E4B /* ZFRippleButton.swift */; };
@@ -64,7 +63,6 @@
 		A56F2B6A1C78244B008B5F90 /* Cloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
 		A56F2B6C1C782453008B5F90 /* Bubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 		A58A7E981C78C31E008ACC90 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		A58E3BCA1C78CB9B00768E4B /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A58E3BCC1C78CBBA00768E4B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A58E3BD11C78D2FC00768E4B /* Bubbles-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bubbles-Bridging-Header.h"; sourceTree = "<group>"; };
 		A58E3BD21C78D2FC00768E4B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
@@ -149,7 +147,6 @@
 				A56F2B6F1C78336F008B5F90 /* Model */,
 				A56F2B3D1C78208C008B5F90 /* Main.storyboard */,
 				A58E3BD91C79AF2900768E4B /* SquidViewController.swift */,
-				A58E3BCA1C78CB9B00768E4B /* MapViewController.swift */,
 				A56F2B6E1C782467008B5F90 /* Supporting Files */,
 			);
 			path = Bubbles;
@@ -396,7 +393,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A58E3BCB1C78CB9B00768E4B /* MapViewController.swift in Sources */,
 				A58E3BDA1C79AF2900768E4B /* SquidViewController.swift in Sources */,
 				A56F2B6B1C78244B008B5F90 /* Cloud.swift in Sources */,
 				A58E3BD41C78D2FC00768E4B /* Reachability.m in Sources */,
